@@ -1,4 +1,4 @@
-package com.example.hiltexample1.ui.theme
+package com.example.hiltexample2.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

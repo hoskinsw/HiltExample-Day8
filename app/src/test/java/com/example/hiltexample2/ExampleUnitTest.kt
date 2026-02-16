@@ -1,4 +1,4 @@
-package com.example.hiltexample1
+package com.example.hiltexample2
 
 import org.junit.Test
 

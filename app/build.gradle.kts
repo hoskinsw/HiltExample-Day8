@@ -1,10 +1,12 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "com.example.hiltexample1"
+    namespace = "com.example.hiltexample2"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -12,7 +14,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.hiltexample1"
+        applicationId = "com.example.hiltexample2"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -55,5 +57,13 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // 1. Core Hilt Library
+    implementation(libs.hilt.android)
+
+    // 2. The Compiler (Use 'ksp', NOT 'kapt')
+    ksp(libs.hilt.compiler)
+
+    // 3. Compose Integration (Allows 'hiltViewModel()')
+    implementation(libs.androidx.hilt.navigation.compose)
 }
